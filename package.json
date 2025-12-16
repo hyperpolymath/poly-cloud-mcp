@@ -1,0 +1,21 @@
+{
+  "name": "poly-cloud-mcp",
+  "version": "1.0.0",
+  "description": "Unified MCP server for cloud providers: AWS, GCP, Azure, DigitalOcean",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "build": "rescript build",
+    "clean": "rescript clean",
+    "dev": "rescript build -w"
+  },
+  "author": "Jonathan D.A. Jewell",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hyperpolymath/poly-cloud-mcp.git"
+  },
+  "devDependencies": {
+    "rescript": "^12.0.0-alpha.13"
+  }
+}

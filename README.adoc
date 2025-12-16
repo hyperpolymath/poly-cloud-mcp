@@ -1,0 +1,118 @@
+= poly-cloud-mcp
+:toc:
+:toc-placement!:
+
+Unified MCP server for multi-cloud provider management. Provides Model Context Protocol tools for interacting with AWS, Google Cloud, Azure, and DigitalOcean through their respective CLI tools.
+
+toc::[]
+
+== Overview
+
+poly-cloud-mcp exposes cloud provider management capabilities through the Model Context Protocol (MCP), enabling AI assistants and other MCP clients to manage cloud resources across multiple providers.
+
+== Adapters
+
+=== AWS (13 tools)
+Amazon Web Services via `aws` CLI:
+
+* `aws_s3_ls` - List S3 buckets/objects
+* `aws_s3_cp` - Copy files to/from S3
+* `aws_ec2_describe_instances` - Describe EC2 instances
+* `aws_ec2_start_instances` - Start EC2 instances
+* `aws_ec2_stop_instances` - Stop EC2 instances
+* `aws_lambda_list` - List Lambda functions
+* `aws_lambda_invoke` - Invoke Lambda functions
+* `aws_iam_list_users` - List IAM users
+* `aws_sts_get_caller_identity` - Get current identity
+* `aws_cloudwatch_get_metrics` - Get CloudWatch metrics
+* `aws_rds_describe_instances` - Describe RDS instances
+* `aws_ecs_list_clusters` - List ECS clusters
+* `aws_ecs_list_services` - List ECS services
+
+=== Google Cloud (12 tools)
+Google Cloud Platform via `gcloud` CLI:
+
+* `gcloud_compute_instances_list` - List Compute Engine VMs
+* `gcloud_compute_instances_start` - Start VMs
+* `gcloud_compute_instances_stop` - Stop VMs
+* `gcloud_storage_ls` - List Cloud Storage buckets/objects
+* `gcloud_storage_cp` - Copy files to/from Cloud Storage
+* `gcloud_functions_list` - List Cloud Functions
+* `gcloud_run_services_list` - List Cloud Run services
+* `gcloud_sql_instances_list` - List Cloud SQL instances
+* `gcloud_container_clusters_list` - List GKE clusters
+* `gcloud_projects_list` - List projects
+* `gcloud_config_list` - Show current configuration
+* `gcloud_auth_list` - List authenticated accounts
+
+=== Azure (12 tools)
+Microsoft Azure via `az` CLI:
+
+* `az_vm_list` - List virtual machines
+* `az_vm_start` - Start VMs
+* `az_vm_stop` - Stop VMs
+* `az_storage_account_list` - List storage accounts
+* `az_storage_blob_list` - List blobs in container
+* `az_webapp_list` - List Web Apps
+* `az_functionapp_list` - List Function Apps
+* `az_aks_list` - List AKS clusters
+* `az_sql_server_list` - List SQL servers
+* `az_group_list` - List resource groups
+* `az_account_show` - Show current account
+* `az_account_list` - List subscriptions
+
+=== DigitalOcean (13 tools)
+DigitalOcean via `doctl` CLI:
+
+* `doctl_droplet_list` - List droplets
+* `doctl_droplet_create` - Create droplets
+* `doctl_droplet_delete` - Delete droplets
+* `doctl_droplet_actions` - Perform droplet actions
+* `doctl_kubernetes_cluster_list` - List K8s clusters
+* `doctl_kubernetes_cluster_kubeconfig` - Get kubeconfig
+* `doctl_database_list` - List managed databases
+* `doctl_spaces_list` - List Spaces
+* `doctl_apps_list` - List App Platform apps
+* `doctl_domain_list` - List domains
+* `doctl_domain_records` - List DNS records
+* `doctl_account_get` - Get account info
+* `doctl_balance_get` - Get account balance
+
+== Requirements
+
+* https://deno.land/[Deno] runtime
+* https://aws.amazon.com/cli/[AWS CLI] (for AWS tools)
+* https://cloud.google.com/sdk/gcloud[gcloud CLI] (for GCP tools)
+* https://docs.microsoft.com/en-us/cli/azure/[Azure CLI] (for Azure tools)
+* https://docs.digitalocean.com/reference/doctl/[doctl] (for DigitalOcean tools)
+
+== Installation
+
+[source,bash]
+----
+git clone https://github.com/hyperpolymath/poly-cloud-mcp
+cd poly-cloud-mcp
+npm install
+npm run build
+----
+
+== Usage
+
+Run as MCP server:
+
+[source,bash]
+----
+deno run --allow-run --allow-read --allow-env main.js
+----
+
+Or use the systemd service:
+
+[source,bash]
+----
+systemctl --user enable poly-cloud-mcp
+systemctl --user start poly-cloud-mcp
+----
+
+== License
+
+MIT
