@@ -2,6 +2,10 @@
 :toc:
 :toc-placement!:
 
+image:https://img.shields.io/badge/RSR-compliant-gold[RSR Compliant,link=https://github.com/hyperpolymath/rhodium-standard-repositories]
+image:https://img.shields.io/badge/MCP-server-blue[MCP Server,link=https://github.com/modelcontextprotocol]
+image:https://img.shields.io/badge/license-MIT-green[License]
+
 Unified MCP server for multi-cloud provider management. Provides Model Context Protocol tools for interacting with AWS, Google Cloud, Azure, and DigitalOcean through their respective CLI tools.
 
 toc::[]

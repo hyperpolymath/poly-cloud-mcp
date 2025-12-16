@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <dc:title>poly-cloud-mcp</dc:title>
+  <dc:creator>hyperpolymath</dc:creator>
+  <dc:subject>MCP, AWS, Google Cloud, Azure, DigitalOcean, Multi-Cloud</dc:subject>
+  <dc:description>Unified MCP server for multi-cloud provider management. Provides Model Context Protocol tools for interacting with AWS, Google Cloud, Azure, and DigitalOcean through their respective CLI tools.</dc:description>
+  <dc:publisher>hyperpolymath</dc:publisher>
+  <dc:date>2025-12-16</dc:date>
+  <dc:type>Software</dc:type>
+  <dc:format>application/javascript</dc:format>
+  <dc:identifier>https://github.com/hyperpolymath/poly-cloud-mcp</dc:identifier>
+  <dc:language>en</dc:language>
+  <dc:rights>MIT</dc:rights>
+</metadata>
