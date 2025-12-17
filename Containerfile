@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 # SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
 
-FROM ghcr.io/wolfi-dev/wolfi-base:latest
+FROM cgr.dev/chainguard/wolfi-base:latest
 
 LABEL org.opencontainers.image.title="poly-cloud-mcp"
 LABEL org.opencontainers.image.description="Unified MCP server for multi-cloud CLI: AWS, GCP, Azure, DigitalOcean, Hetzner"
