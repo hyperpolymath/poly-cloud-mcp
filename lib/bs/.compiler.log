@@ -1,23 +1,2 @@
-#Start(1765926856180)
-
-  Warning number 26
-  /var/home/hyper/repos/poly-cloud-mcp/src/adapters/DigitalOcean.res:207:11-14
-
-  205 ┆ let region = getString("region")
-  206 ┆ let args = ["compute", "cdn", "list"] // Note: spaces uses different c
-      ┆ ommand structure
-  207 ┆ let args = region !== "" ? Array.concat(args, ["--region", region]) : 
-      ┆ args
-  208 ┆ // Actually list spaces via s3cmd or similar - doctl doesn't directly 
-      ┆ list spaces
-  209 ┆ await runDoctl(["compute", "region", "list"]) // Placeholder - spaces 
-      ┆ requires different approach
-
-  unused variable args.
-
-Fix this by:
-- Deleting the variable if it's not used anymore.
-- Prepending the variable name with `_` (like `_args`) to ignore that the variable is unused.
-- Using the variable somewhere.
-
-#Done(1765926856277)
+#Start(1766001608676)
+#Done(1766001608790)

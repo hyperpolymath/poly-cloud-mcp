@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
+
 // AWS CLI adapter for Amazon Web Services
 // Provides tools for managing AWS resources via the aws cli
 

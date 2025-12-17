@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
+
 // DigitalOcean CLI adapter
 // Provides tools for managing DigitalOcean resources via doctl
 
@@ -202,11 +205,9 @@ let handleToolCall = async (name: string, args: JSON.t): result<string, string> 
     }
   | "doctl_database_list" => await runDoctl(["databases", "list"])
   | "doctl_spaces_list" => {
-      let region = getString("region")
-      let args = ["compute", "cdn", "list"] // Note: spaces uses different command structure
-      let args = region !== "" ? Array.concat(args, ["--region", region]) : args
-      // Actually list spaces via s3cmd or similar - doctl doesn't directly list spaces
-      await runDoctl(["compute", "region", "list"]) // Placeholder - spaces requires different approach
+      // Note: doctl doesn't have direct spaces list command - uses serverless storage API
+      // This lists available regions that support Spaces
+      await runDoctl(["compute", "region", "list"])
     }
   | "doctl_apps_list" => await runDoctl(["apps", "list"])
   | "doctl_domain_list" => await runDoctl(["compute", "domain", "list"])

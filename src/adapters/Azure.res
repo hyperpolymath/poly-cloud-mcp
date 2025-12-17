@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
+
 // Azure CLI adapter
 // Provides tools for managing Azure resources via az cli
 

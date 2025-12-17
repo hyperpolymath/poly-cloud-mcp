@@ -1,6 +1,6 @@
 {
   "aibdp_version": "0.2",
-  "canonical_uri": "https://github.com/hyperpolymath/poly-cloud-mcp/.well-known/aibdp.json",
+  "canonical_uri": "https://github.com/hyperpolymath/poly-cloud-mcp/blob/main/.well-known/aibdp.json",
   "contact": "mailto:ai-consent@hyperpolymath.org",
   "expires": "2026-12-16T23:59:59Z",
   "policy_uri": "https://github.com/hyperpolymath/poly-cloud-mcp/blob/main/.well-known/ai.txt",

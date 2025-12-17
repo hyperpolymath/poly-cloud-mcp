@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MIT
+// SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
+
 // Google Cloud CLI adapter
 // Provides tools for managing GCP resources via gcloud
 
