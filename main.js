@@ -5,10 +5,10 @@
 // poly-cloud-mcp - Multi-cloud provider MCP server
 // Adapters: AWS, GCloud, Azure, DigitalOcean
 
-import * as AWS from "./lib/es6/src/adapters/AWS.js";
-import * as GCloud from "./lib/es6/src/adapters/GCloud.js";
-import * as Azure from "./lib/es6/src/adapters/Azure.js";
-import * as DigitalOcean from "./lib/es6/src/adapters/DigitalOcean.js";
+import * as AWS from "./lib/es6/src/adapters/AWS.res.js";
+import * as GCloud from "./lib/es6/src/adapters/GCloud.res.js";
+import * as Azure from "./lib/es6/src/adapters/Azure.res.js";
+import * as DigitalOcean from "./lib/es6/src/adapters/DigitalOcean.res.js";
 
 const SERVER_INFO = {
   name: "poly-cloud-mcp",
