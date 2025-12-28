@@ -7,9 +7,7 @@
   },
   "imports": {
     "@anthropic-ai/sdk": "npm:@anthropic-ai/sdk@^0.39.0",
-    "@modelcontextprotocol/sdk": "npm:@modelcontextprotocol/sdk@^1.0.0",
-    "@rescript/runtime/": "npm:@rescript/runtime@12.0.2/",
-    "@modelcontextprotocol/sdk/": "npm:@modelcontextprotocol/sdk@1.24.3/"
+    "@modelcontextprotocol/sdk": "npm:@modelcontextprotocol/sdk@^1.0.0"
   },
   "nodeModulesDir": "auto"
 }
