@@ -82,13 +82,56 @@ DigitalOcean via `doctl` CLI:
 * `doctl_account_get` - Get account info
 * `doctl_balance_get` - Get account balance
 
+== Runtime Mode
+
+[IMPORTANT]
+====
+**Local-Agent Mode Only** — This MCP server wraps CLI tools (`aws`, `gcloud`, `az`, `doctl`) and requires `--allow-run` permission. It cannot run in Hosted-HTTP mode.
+====
+
+|===
+|Mode |Supported |Notes
+
+|Local-Agent (stdio)
+|✓ Yes
+|Primary mode. Runs locally, executes CLI commands.
+
+|Hosted-HTTP
+|✗ No
+|Cannot wrap CLI tools from a hosted environment.
+|===
+
+== Security Boundary
+
+[WARNING]
+====
+This MCP server executes external CLI commands using Deno's `--allow-run` permission. The security boundary is your local cloud CLI configuration and credentials.
+====
+
+**What this means:**
+
+* Commands run with your locally configured cloud credentials
+* AWS: Uses `~/.aws/credentials` or `AWS_*` environment variables
+* GCP: Uses `gcloud auth` login or service account
+* Azure: Uses `az login` session
+* DigitalOcean: Uses `doctl auth` or `DIGITALOCEAN_ACCESS_TOKEN`
+* The MCP client (e.g., Claude) can perform any CLI action your credentials allow
+
+**Recommendations:**
+
+1. Use IAM roles with minimal necessary permissions
+2. Consider separate credentials for MCP access
+3. Avoid running with admin/owner-level credentials
+4. Review tool calls before approving in your MCP client
+5. Set billing alerts for your cloud accounts
+
 == Requirements
 
-* https://deno.land/[Deno] runtime
-* https://aws.amazon.com/cli/[AWS CLI] (for AWS tools)
-* https://cloud.google.com/sdk/gcloud[gcloud CLI] (for GCP tools)
-* https://docs.microsoft.com/en-us/cli/azure/[Azure CLI] (for Azure tools)
-* https://docs.digitalocean.com/reference/doctl/[doctl] (for DigitalOcean tools)
+* https://deno.land/[Deno] runtime (v2.0+)
+* https://aws.amazon.com/cli/[AWS CLI] (optional, for AWS tools)
+* https://cloud.google.com/sdk/gcloud[gcloud CLI] (optional, for GCP tools)
+* https://docs.microsoft.com/en-us/cli/azure/[Azure CLI] (optional, for Azure tools)
+* https://docs.digitalocean.com/reference/doctl/[doctl] (optional, for DigitalOcean tools)
 
 == Installation
 
@@ -96,13 +139,11 @@ DigitalOcean via `doctl` CLI:
 ----
 git clone https://github.com/hyperpolymath/poly-cloud-mcp
 cd poly-cloud-mcp
-npm install
-npm run build
 ----
 
 == Usage
 
-Run as MCP server:
+Run as MCP server (Local-Agent mode):
 
 [source,bash]
 ----
@@ -116,6 +157,47 @@ Or use the systemd service:
 systemctl --user enable poly-cloud-mcp
 systemctl --user start poly-cloud-mcp
 ----
+
+== Smoke Test
+
+Verify the server is working correctly:
+
+[source,bash]
+----
+# 1. Check Deno can run the server
+deno run --allow-run --allow-read --allow-env main.js &
+SERVER_PID=$!
+
+# 2. Verify at least one CLI is accessible
+aws --version || gcloud --version || az --version || doctl version
+
+# 3. Test authentication (pick your provider)
+aws sts get-caller-identity  # AWS
+gcloud auth list             # GCP
+az account show              # Azure
+doctl account get            # DigitalOcean
+
+# 4. Cleanup
+kill $SERVER_PID
+----
+
+**Expected smoke test results:**
+
+|===
+|Check |Expected Result
+
+|Server starts
+|No errors, listens on stdio
+
+|CLI available
+|At least one cloud CLI returns version
+
+|Auth configured
+|CLI shows authenticated identity
+
+|Tool call works
+|Returns cloud resources (if any exist)
+|===
 
 == License
 
