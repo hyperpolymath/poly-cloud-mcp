@@ -1,4 +1,4 @@
-;;; SPDX-License-Identifier: MIT
+;;; SPDX-License-Identifier: PMPL-1.0-or-later
 ;;; SPDX-FileCopyrightText: 2025 Jonathan D.A. Jewell
 ;;; poly-cloud-mcp Testing Report (Guile Scheme format)
 ;;; Generated: 2025-12-29
